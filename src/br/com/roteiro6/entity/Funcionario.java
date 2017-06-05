@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Cacheable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,11 +19,17 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 @Entity
 @Table(name = "FUNCIONARIO", catalog = "dbtarefas", uniqueConstraints = {
 		@UniqueConstraint(columnNames = "CODIGO_FUNCIONARIO") })
+
         @NamedQuery(name = "Funcionario.findAll", query = "select f from Funcionario f")
 
+@Cacheable
+@Cache(region="func",usage=CacheConcurrencyStrategy.READ_ONLY)
 public class Funcionario implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
