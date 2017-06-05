@@ -19,9 +19,9 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "FUNCIONARIO", catalog = "DBTarefa", uniqueConstraints = {
+@Table(name = "FUNCIONARIO", catalog = "dbtarefas", uniqueConstraints = {
 		@UniqueConstraint(columnNames = "CODIGO_FUNCIONARIO") })
-@NamedQuery(name = "Funcionario.findAll", query = "select f from Funcionario f")
+        @NamedQuery(name = "Funcionario.findAll", query = "select f from Funcionario f")
 
 public class Funcionario implements Serializable {
 	
@@ -39,7 +39,7 @@ public class Funcionario implements Serializable {
 	private String nome;
 	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "FUNCIONARIO_TAREFA", catalog = "DBTarefa", joinColumns = {
+	@JoinTable(name = "FUNCIONARIO_TAREFA", catalog = "dbtarefas", joinColumns = {
 			@JoinColumn(name = "FUNCIONARIO_ID", nullable = false, updatable = false) }, inverseJoinColumns = {
 					@JoinColumn(name = "TAREFA_ID", nullable = false, updatable = false) })
 	private Set<Tarefa> tarefas = new HashSet<>();
