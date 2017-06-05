@@ -13,6 +13,8 @@ public class Teste {
 	public static void main(String[] args) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("AtividadeRoteiro6P3");
 		EntityManager em = emf.createEntityManager();
+		
+		
 		incluirFuncionario(em);
 		listarFuncionarios(em);
 		buscarFuncionario(em, "2000");
